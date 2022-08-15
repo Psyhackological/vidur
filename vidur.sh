@@ -1,4 +1,20 @@
 #!/bin/bash
+############################################################
+# HELP                                                     #
+############################################################
+Help()
+{
+   # Display Help
+   echo "Add description of the script functions here."
+   echo
+   echo "Syntax: scriptTemplate [-g|h|v|V]"
+   echo "options:"
+   echo "g     Print the GPL license notification."
+   echo "h     Print this Help."
+   echo "v     Verbose mode."
+   echo "V     Print software version and exit."
+   echo
+}
 
 # do not show any errors while $path/*.{mp4,webm,mkv,ts,mov}
 shopt -s nullglob
@@ -29,6 +45,18 @@ x_calls() {
     single_call $path;
   done
 }
+
+############################################################
+# Main program                                             #
+############################################################
+# Get the options
+while getopts ":h" option; do
+   case $option in
+      h) # display Help
+         Help
+         exit;;
+   esac
+done
 
 # $# = number of arguments
 # -gt = greater than
